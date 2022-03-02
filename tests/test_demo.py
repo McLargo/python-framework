@@ -1,20 +1,11 @@
 import pytest
 
 from demoapp.error_handler import (
-    ERROR_CODE_1000,
     ERROR_CODE_1001,
     ERROR_CODE_1002,
     ERROR_CODE_1003,
     ERROR_CODE_1004,
 )
-
-
-@pytest.skip("Cannot reprdocue")
-def test_ugly_error(client):
-    response = client.get("/api/v1/demo", headers={"block_request": True})
-    assert response.status_code == 500
-    assert response.json["code"] == ERROR_CODE_1000
-    assert response.json["message"] == ""
 
 
 def test_403_error(client):
