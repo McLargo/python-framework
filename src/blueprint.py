@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 
-from demoapp.decorators import is_json, permission
-from demoapp.schemas import DemoSchema
+from src.decorators import is_json, permission
+from src.schemas import DemoSchema
 
 demo_blueprint = Blueprint("Demo", __name__, url_prefix="/api/v1")
 

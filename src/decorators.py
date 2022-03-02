@@ -2,7 +2,7 @@ from functools import wraps
 
 from flask import abort, request
 
-from demoapp.error_handler import RequestJsonException
+from src.error_handler import RequestJsonException
 
 
 def is_json(f):

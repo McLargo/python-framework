@@ -1,7 +1,7 @@
 from flask import jsonify
 from marshmallow.exceptions import ValidationError
 
-from demoapp.logging import Logging
+from src.logging import Logging
 
 ERROR_CODE_1000 = 1000  # uncontrolled error
 ERROR_CODE_1001 = 1001  # validation error

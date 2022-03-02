@@ -1,6 +1,6 @@
 import pytest
 
-from demoapp.error_handler import (
+from src.error_handler import (
     ERROR_CODE_1000,
     ERROR_CODE_1001,
     ERROR_CODE_1002,

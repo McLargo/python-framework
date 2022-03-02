@@ -1,7 +1,7 @@
 from flask import Flask
 
-from demoapp.blueprint import register_blueprint
-from demoapp.error_handler import register_error_handlers
+from src.blueprint import register_blueprint
+from src.error_handler import register_error_handlers
 
 app = Flask(__name__)
 
