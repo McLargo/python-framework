@@ -3,6 +3,5 @@ jsonschema
 python-dateutil
 pytest
 pytest-cov
-black
+pytest-sugar
 pre-commit
-ipdb

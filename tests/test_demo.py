@@ -1,13 +1,5 @@
-import pytest
-
 from demoapp.exceptions import ERROR_CODE_1000, ERROR_CODE_1001
 from demoapp.serializers import DemoSerializer
-from main import app
-
-
-@pytest.fixture
-def client():
-    return app.test_client()
 
 
 def test_demo(client):
