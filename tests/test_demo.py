@@ -1,9 +1,8 @@
 import pytest
 
-from main import app
-
 from demoapp.exceptions import ERROR_CODE_1000, ERROR_CODE_1001
 from demoapp.serializers import DemoSerializer
+from main import app
 
 
 @pytest.fixture
@@ -38,7 +37,6 @@ def test_demopost(client):
         "full_name": "Miroslav Josef Klose",
         "age": 43,
         "is_alive": True,
-
     }
     assert resp.json == expected_result
 
@@ -72,7 +70,6 @@ def test_demopost_without_middle_name(client):
         "full_name": "Miroslav Klose",
         "age": 43,
         "is_alive": True,
-
     }
     assert resp.json == expected_result
 

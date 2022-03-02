@@ -4,4 +4,5 @@ python-dateutil
 pytest
 pytest-cov
 black
+pre-commit
 ipdb

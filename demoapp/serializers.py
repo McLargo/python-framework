@@ -1,10 +1,9 @@
-from datetime import datetime, date
+from datetime import date, datetime
 
 from dateutil.relativedelta import relativedelta
 
 
 class DemoSerializer:
-
     def instance(self):
         # TODO: this will fetch info from database, redis, file...
         return {
@@ -25,6 +24,8 @@ class DemoSerializer:
             instance = self.instance()
         return {
             "full_name": f"{instance['first_name']} {instance['last_name']}",
-            "age": DemoSerializer.calculate_age(instance["born"], instance["died"]),
-            "is_alive": instance["died"] is None
+            "age": DemoSerializer.calculate_age(
+                instance["born"], instance["died"]
+            ),
+            "is_alive": instance["died"] is None,
         }

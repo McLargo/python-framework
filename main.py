@@ -2,26 +2,22 @@ from flask import Flask, request
 
 from demoapp.decorators import is_json
 from demoapp.deserializers import DemoDeserializer
-from demoapp.exceptions import (
-    ValidationException,
-    ERROR_CODE_1000,
-)
+from demoapp.exceptions import ERROR_CODE_1000, ValidationException
 from demoapp.schemas import schema_request
 from demoapp.serializers import DemoSerializer
 from demoapp.validators import validate_schema
-
 
 app = Flask(__name__)
 
 
 class DemoApiV1:
-    @app.route("/api/v1/demo", methods=['GET'])
-    def demo():
+    @app.route("/api/v1/demo", methods=["GET"])
+    def demo(error=None):
         return DemoSerializer().response()
 
-    @app.route("/api/v1/demo", methods=['POST'])
+    @app.route("/api/v1/demo", methods=["POST"])
     @is_json
-    def demopost():
+    def demopost(error=None):
         try:
             validate_schema(schema=schema_request, data=request.json)
             data = DemoDeserializer.deserializer(request.json)
