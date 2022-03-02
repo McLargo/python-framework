@@ -1,93 +1,130 @@
-from demoapp.exceptions import ERROR_CODE_1000, ERROR_CODE_1001
-from demoapp.serializers import DemoSerializer
+import pytest
+
+from demoapp.error_handler import (
+    ERROR_CODE_1000,
+    ERROR_CODE_1001,
+    ERROR_CODE_1002,
+    ERROR_CODE_1003,
+    ERROR_CODE_1004,
+)
 
 
-def test_demo(client):
-    response = client.get("/api/v1/demo")
-    assert response.status_code == 200
-    assert isinstance(response.json, dict)
-    assert response.json["data"] == DemoSerializer().response()
+@pytest.skip("Cannot reprdocue")
+def test_ugly_error(client):
+    response = client.get("/api/v1/demo", headers={"block_request": True})
+    assert response.status_code == 500
+    assert response.json["code"] == ERROR_CODE_1000
+    assert response.json["message"] == ""
 
 
-def test_missing_route(client):
+def test_403_error(client):
+    response = client.get("/api/v1/demo", headers={"block_request": True})
+    assert response.status_code == 403
+    assert response.json["code"] == ERROR_CODE_1002
+    assert response.json["message"] == "Forbidden error"
+
+
+def test_403_error_post(client):
+    response = client.post("/api/v1/demo", headers={"block_request": True})
+    assert response.status_code == 403
+    assert response.json["code"] == ERROR_CODE_1002
+    assert response.json["message"] == "Forbidden error"
+
+
+def test_404_error(client):
     response = client.get("/api/v1/missing")
     assert response.status_code == 404
-    assert response.json is None
+    assert response.json["code"] == ERROR_CODE_1003
+    assert response.json["message"] == "Not found error"
 
 
-def test_demopost(client):
-    json_data = {
-        "first_name": "Miroslav",
-        "middle_name": "Josef",
-        "last_name": "Klose",
-        "dob": "09-06-1978",
-    }
-    response = client.post("/api/v1/demo", json=json_data)
-    assert response.status_code == 200
-    assert isinstance(response.json, dict)
-    expected_result = {
-        "full_name": "Miroslav Josef Klose",
-        "age": 43,
-        "is_alive": True,
-    }
-    assert response.json["data"] == expected_result
+def test_405_error(client):
+    response = client.delete("/api/v1/demo")
+    assert response.status_code == 405
+    assert response.json["code"] == ERROR_CODE_1004
+    assert response.json["message"] == "Method not allowed"
 
 
-def test_demopost_invalid_keys(client):
-    json_data = {
-        "first_name": "Miroslav",
-        "middle_name": "Josef",
-        "last_name": "Klose",
-    }
-    response = client.post("/api/v1/demo", json=json_data)
-    assert response.status_code == 400
-    assert isinstance(response.json, dict)
-    expected_result = {
-        "error_code": ERROR_CODE_1001,
-        "error_message": "Validation: 'dob' is a required property",
-    }
-    assert response.json == expected_result
-
-
-def test_demopost_without_middle_name(client):
-    json_data = {
-        "first_name": "Miroslav",
-        "last_name": "Klose",
-        "dob": "09-06-1978",
-    }
-    response = client.post("/api/v1/demo", json=json_data)
-    assert response.status_code == 200
-    assert isinstance(response.json, dict)
-    expected_result = {
-        "full_name": "Miroslav Klose",
-        "age": 43,
-        "is_alive": True,
-    }
-    assert response.json["data"] == expected_result
-
-
-def test_demopost_ugly_exception(client):
-    json_data = {
-        "first_name": "Miroslav",
-        "last_name": "Klose",
-        "dob": "67-06-1978",
-    }
-    response = client.post("/api/v1/demo", json=json_data)
-    assert response.status_code == 400
-    assert isinstance(response.json, dict)
-    expected_result = {
-        "error_code": ERROR_CODE_1000,
-        "error_message": "time data '67-06-1978' does not match format '%d-%m-%Y'",
-    }
-    assert response.json == expected_result
-
-
-def test_demopost_not_json(client):
+def test_post_demo_not_json(client):
     response = client.post("/api/v1/demo")
     assert response.status_code == 400
     assert isinstance(response.json, dict)
     expected_result = {
         "error_code": ERROR_CODE_1001,
         "error_message": "Request is not JSON",
+    }
+    assert response.json == expected_result
+
+
+def test_get_demo(client, demo_fixture_expected):
+    response = client.get("/api/v1/demo")
+    assert response.status_code == 200
+    assert isinstance(response.json, dict)
+    assert response.json["data"] == demo_fixture_expected
+
+
+def test_post_demo(client, demo_fixture, demo_fixture_expected):
+    response = client.post("/api/v1/demo", json=demo_fixture)
+    assert response.status_code == 200
+    assert isinstance(response.json, dict)
+    assert response.json["data"] == demo_fixture_expected
+
+
+@pytest.mark.freeze_time("2022-03-02")
+def test_post_demo_died_missing(client, demo_fixture, demo_fixture_expected):
+    demo_fixture.pop("died")
+    response = client.post("/api/v1/demo", json=demo_fixture)
+    assert response.status_code == 200
+    assert isinstance(response.json, dict)
+    demo_fixture_expected["died"] = None
+    demo_fixture_expected["age"] = 87
+    demo_fixture_expected["alive"] = True
+    assert response.json["data"] == demo_fixture_expected
+
+
+@pytest.mark.freeze_time("2022-03-02")
+def test_post_demo_died_is_none(client, demo_fixture, demo_fixture_expected):
+    demo_fixture["died"] = None
+    response = client.post("/api/v1/demo", json=demo_fixture)
+    assert response.status_code == 200
+    assert isinstance(response.json, dict)
+    demo_fixture_expected["died"] = None
+    demo_fixture_expected["age"] = 87
+    demo_fixture_expected["alive"] = True
+    assert response.json["data"] == demo_fixture_expected
+
+
+def test_post_demo_missing_required_first_name(client, demo_fixture):
+    demo_fixture.pop("first_name")
+    response = client.post("/api/v1/demo", json=demo_fixture)
+    assert response.status_code == 400
+    assert isinstance(response.json, dict)
+    expected_result = {
+        "error_code": ERROR_CODE_1001,
+        "error_message": {"first_name": ["Missing data for required field."]},
+    }
+    assert response.json == expected_result
+
+
+def test_post_demo_missing_required_last_name(client, demo_fixture):
+    demo_fixture.pop("last_name")
+    response = client.post("/api/v1/demo", json=demo_fixture)
+    assert response.status_code == 400
+    assert isinstance(response.json, dict)
+    expected_result = {
+        "error_code": ERROR_CODE_1001,
+        "error_message": {"last_name": ["Missing data for required field."]},
+    }
+    assert response.json == expected_result
+
+
+def test_post_demo_missing_required_born(client, demo_fixture):
+    demo_fixture.pop("born")
+    response = client.post("/api/v1/demo", json=demo_fixture)
+    assert response.status_code == 400
+    assert isinstance(response.json, dict)
+    expected_result = {
+        "error_code": ERROR_CODE_1001,
+        "error_message": {"born": ["Missing data for required field."]},
     }
     assert response.json == expected_result

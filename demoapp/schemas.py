@@ -1,31 +1,25 @@
-schema_request = {
-    "title": "Request accepted",
-    "type": "object",
-    "required": ["first_name", "last_name", "dob"],
-    "properties": {
-        "first_name": {"description": "first name", "type": "string"},
-        "middle_name": {"description": "middle name", "type": "string"},
-        "last_name": {"description": "last name", "type": "string"},
-        "dob": {"description": "date of birth", "type": "string"},
-    },
-}
+from datetime import date
+
+from dateutil.relativedelta import relativedelta
+from marshmallow import INCLUDE, Schema, fields, validate
 
 
-schema_response = {
-    "title": "Response accepted",
-    "type": "array",
-    "items": {
-        "type": "object",
-        "required": ["name", "p"],
-        "properties": {
-            "name": {
-                "description": "Name of powerplant",
-                "type": "string",
-            },
-            "p": {
-                "description": "P produce by the powerplant",
-                "type": "number",
-            },
-        },
-    },
-}
+class DemoSchema(Schema):
+    class Meta:
+        unknown = INCLUDE
+
+    first_name = fields.String(validate=validate.Length(max=128), required=True)
+    last_name = fields.String(validate=validate.Length(max=128), required=True)
+    born = fields.Date(required=True)
+    died = fields.Date(allow_none=True, missing=None)
+    age = fields.Method("get_age")
+    alive = fields.Method("is_alive")
+
+    def get_age(self, instance):
+        died = instance.get("died")
+        if died is None:
+            died = date.today()
+        return relativedelta(died, instance["born"]).years
+
+    def is_alive(self, instance):
+        return instance.get("died") is None

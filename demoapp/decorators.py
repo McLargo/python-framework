@@ -1,21 +1,25 @@
 from functools import wraps
 
-from flask import jsonify, request
+from flask import abort, request
 
-from demoapp.exceptions import ERROR_CODE_1001
+from demoapp.error_handler import RequestJsonException
 
 
 def is_json(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         if not request.is_json:
-            return (
-                jsonify(
-                    error_code=ERROR_CODE_1001,
-                    error_message="Request is not JSON",
-                ),
-                400,
-            )
+            raise RequestJsonException
+        return f(*args, **kwargs)
+
+    return wrapper
+
+
+def permission(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if "block_request" in request.headers:
+            abort(403)
         return f(*args, **kwargs)
 
     return wrapper
