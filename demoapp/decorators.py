@@ -20,6 +20,8 @@ def permission(f):
     def wrapper(*args, **kwargs):
         if "block_request" in request.headers:
             abort(403)
+        if "raise_error" in request.headers:
+            raise Exception("Uncontrolled exception")
         return f(*args, **kwargs)
 
     return wrapper

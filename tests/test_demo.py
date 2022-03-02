@@ -1,11 +1,19 @@
 import pytest
 
 from demoapp.error_handler import (
+    ERROR_CODE_1000,
     ERROR_CODE_1001,
     ERROR_CODE_1002,
     ERROR_CODE_1003,
     ERROR_CODE_1004,
 )
+
+
+def test_500_error(client):
+    response = client.get("/api/v1/demo", headers={"raise_error": True})
+    assert response.status_code == 500
+    assert response.json["code"] == ERROR_CODE_1000
+    assert response.json["message"] == "Uncontrolled exception"
 
 
 def test_403_error(client):
