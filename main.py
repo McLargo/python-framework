@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, request
 
 from demoapp.decorators import is_json
 from demoapp.deserializers import DemoDeserializer
@@ -23,6 +23,12 @@ class DemoApiV1:
             data = DemoDeserializer.deserializer(request.json)
             return jsonify(data=DemoSerializer().response(instance=data))
         except ValidationException as e:
-            return jsonify(error_message=e.message, error_code=e.error_code), 400
+            return (
+                jsonify(error_message=e.message, error_code=e.error_code),
+                400,
+            )
         except Exception as e:
-            return jsonify(error_message=str(e), error_code=ERROR_CODE_1000), 400
+            return (
+                jsonify(error_message=str(e), error_code=ERROR_CODE_1000),
+                400,
+            )
