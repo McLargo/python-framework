@@ -35,7 +35,7 @@ Even you can run Flask service with:
 
 ##### Code organization
 
-Aside from `main.py` file, which is mandatory to start application, I've created two extra folders One to manage and gather other python files related to the application, and another folder for tests. I do believe that unit test are very important, to keep the code clean, and dont break any code that is working. A good coverage of the application can also indicate that it is robust. TDD (Test-Driven Development https://www.guru99.com/test-driven-development.html) is usually my ideal development methodology.
+Aside from `app.py` file, which is mandatory to start application, I've created two extra folders One to manage and gather other python files related to the application, and another folder for tests. I do believe that unit test are very important, to keep the code clean, and dont break any code that is working. A good coverage of the application can also indicate that it is robust. TDD (Test-Driven Development https://www.guru99.com/test-driven-development.html) is usually my ideal development methodology.
 
 Coverage is tested with command:
 
