@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 from demoapp.decorators import is_json
 from demoapp.deserializers import DemoDeserializer
@@ -13,7 +13,7 @@ app = Flask(__name__)
 class DemoApiV1:
     @app.route("/api/v1/demo", methods=["GET"])
     def demo(error=None):
-        return DemoSerializer().response()
+        return jsonify(data=DemoSerializer().response())
 
     @app.route("/api/v1/demo", methods=["POST"])
     @is_json
@@ -21,8 +21,8 @@ class DemoApiV1:
         try:
             validate_schema(schema=schema_request, data=request.json)
             data = DemoDeserializer.deserializer(request.json)
-            return DemoSerializer().response(instance=data)
+            return jsonify(data=DemoSerializer().response(instance=data))
         except ValidationException as e:
-            return {"error_message": e.message, "error_code": e.error_code}, 400
+            return jsonify(error_message=e.message, error_code=e.error_code), 400
         except Exception as e:
-            return {"error_message": str(e), "error_code": ERROR_CODE_1000}, 400
+            return jsonify(error_message=str(e), error_code=ERROR_CODE_1000), 400
