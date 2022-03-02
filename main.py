@@ -29,4 +29,4 @@ class DemoApiV1:
         except ValidationException as e:
             return {"error_message": e.message, "error_code": e.error_code}, 400
         except Exception as e:
-            return {"error_message": str(e.message), "error_code": ERROR_CODE_1000}, 400
+            return {"error_message": str(e), "error_code": ERROR_CODE_1000}, 400

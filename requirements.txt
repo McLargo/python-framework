@@ -2,5 +2,6 @@ flask
 jsonschema
 python-dateutil
 pytest
+pytest-cov
 black
 ipdb
