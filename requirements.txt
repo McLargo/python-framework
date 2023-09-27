@@ -1,9 +1,0 @@
-flask
-flask-marshmallow
-jsonschema
-python-dateutil
-pytest
-pytest-cov
-pytest-sugar
-pytest-freezegun
-pre-commit

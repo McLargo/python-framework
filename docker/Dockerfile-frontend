@@ -1,0 +1,17 @@
+# get image
+FROM node:alpine
+
+# set working directory
+WORKDIR /srv/app
+
+# copy files to working directory
+COPY ./frontend/package*.json /srv/app
+
+# install dependencies
+RUN npm install --quiet
+
+# Bundle node_modules source
+COPY . ./frontend
+
+# run web app server
+CMD ["npm", "run", "dev"]
