@@ -7,7 +7,6 @@ router = APIRouter(
 )
 
 
-# liveness endpoint
 @router.get(
     "/liveness",
     response_model=LivenessModel,

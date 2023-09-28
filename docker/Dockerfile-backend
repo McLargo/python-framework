@@ -4,6 +4,8 @@ FROM python:3.10-slim
 # set working directory
 WORKDIR /app
 
+# set PYTHONBREAKPOINT
+ENV PYTHONBREAKPOINT="ipdb.set_trace"
 # copy files to working directory
 COPY ./backend /app
 
