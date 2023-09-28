@@ -61,9 +61,10 @@ updated :wink:
 - Raise any issues found in the ticket.
 - Response to the ticket with the results of the testing, either screenshots,
   postman collection, logs, etc.
+- In case of any issues found, the ticket can be moved back to **In Progress**
+  status.
 
 ## DONE
 
-- Once the ticket is approved by QA, it can be moved to **Done** status.
-- The ticket can be deployed to production environment automatically by CI/CDE
-  pipeline, depending on the release strategy.
+- Once the ticket is approved by QA, Product Owner can review if ticket met the
+  accepted criteria. If yes, move ticket to **Done** status.
