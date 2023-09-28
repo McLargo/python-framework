@@ -40,11 +40,29 @@ fixed structure that can be improve at any time, to have a standard way of
 developing new projects. I keep all my knowledge in one place, and it is the
 perfect playground for new features that can be included in the future.
 
-TODO: explain folder structure
-Aside from `app.py` file, which is mandatory to start application, I've created
-two extra folders One to manage and gather other python files related to the
-application, and another folder for tests
-TODO: explain folder structure
+Project structure is fixed, and it is based on the following structure:
+
+- `.github/workflows/`: folder to manage and gather files related to
+  github actions
+- `backend/`: folder to manage and gather files related to the backend
+  - `src/`: folder to manage and gather python files related to the application
+  - `tests/`: folder for tests
+  - `main.py`: main file to start the application
+  - `requirements.txt`: file to manage python dependencies
+  - `pyproject.toml/setup.cfg`: files to manage project configuration
+- `docker`: folder to manage and gather files related to docker and docker
+  compose
+- `docs/`: folder to manage and gather files related to the documentation
+  - `adr`: folder to manage and gather files related to the architecture
+    decision record
+  - `flows`: folder to manage and gather files related to the flows
+  - `assets`: folder to manage and gather assets related to the
+    documentation
+  - `templates`: folder to manage and gather templates
+- `frontend`: folder to manage and gather files related to the frontend
+- `README.md`: main file to start the application
+- `.gitignore`: file to manage git ignore
+- `.pre-commit-config.yaml`: file to manage pre-commit hooks
 
 ## Getting started
 
