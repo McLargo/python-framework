@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-from src.routers.monitoring import router as monitoring_router
+from src.routers import monitoring_router
 
-# sentry
+# app
 app = FastAPI()
 
 # include router
