@@ -32,6 +32,7 @@ updated :wink:
 - Document carefully if code contain breaking changes, new environment
   variables, configuration changes, migration that DevOps/QA team needs to take
   into account once feature is deployed to staging/production.
+- All code commits should follow the commit guidelines
 
 ## Code Review
 
@@ -44,6 +45,8 @@ updated :wink:
 - Does it have any impact on the documentation?
 - Does it met the code guidelines?
 - Does it breaks any existing functionality?
+- Codebase is clean of TODO
+- Any technical debt issues are logged
 
 ## Deployment
 
