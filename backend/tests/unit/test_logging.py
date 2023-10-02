@@ -1,5 +1,6 @@
-from faker import Faker
 from unittest.mock import ANY, Mock
+
+from faker import Faker
 
 from src.logger import Logger
 
@@ -16,16 +17,15 @@ def test_logging_init() -> None:
     assert logger._logger.name == "test.test_logging"
 
 
-
-def test_logging_methods(faker: Faker)-> None:
+def test_logging_methods(faker: Faker) -> None:
     logger: Logger = Logger()
     logger._logger = Mock()
 
     words: list[str] = faker.words(nb=2)
 
     logger.log_info("Info message")
-    logger.log_warning("Warning message",  words[0])
-    logger.log_error("Error message",  words[0], words[1])
+    logger.log_warning("Warning message", words[0])
+    logger.log_error("Error message", words[0], words[1])
 
     assert logger._logger.debug.call_count == 0
 

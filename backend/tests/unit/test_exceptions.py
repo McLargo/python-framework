@@ -1,6 +1,6 @@
 from faker import Faker
 
-from src.exceptions import APIError, SampleError, SAMPLE_ERROR
+from src.exceptions import SAMPLE_ERROR, APIError, SampleError
 
 
 def test_api_error(faker: Faker) -> None:

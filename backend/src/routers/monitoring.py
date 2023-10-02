@@ -11,8 +11,7 @@ router = APIRouter(
     "/liveness",
     response_model=LivenessModel,
     summary="Liveness and health checks.",
-    description="Health checks of the service and its dependencies.")
+    description="Health checks of the service and its dependencies.",
+)
 def liveness() -> LivenessModel:
-    return LivenessModel(
-        backend_liveness=True
-    )
+    return LivenessModel(backend_liveness=True)

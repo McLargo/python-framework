@@ -2,7 +2,6 @@ import logging
 
 
 class Logger:
-
     def __init__(self, name: str = __name__):
         # set logging format and config
         self._log_format = "%(asctime)s: %(message)s"
@@ -10,7 +9,7 @@ class Logger:
         logging.basicConfig(
             format=self._log_format,
             level=logging.INFO,
-            datefmt=self._date_format
+            datefmt=self._date_format,
         )
         self._logger = logging.getLogger(name)
 

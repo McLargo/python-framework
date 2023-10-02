@@ -1,5 +1,4 @@
-from httpx import Response
-from src.models import LivenessModel
+from httpx import Response, codes
 
 
 def test_liveness(client) -> None:
@@ -7,6 +6,6 @@ def test_liveness(client) -> None:
 
     response: Response = client.get("/liveness")
 
-    assert response.status_code == 200
+    assert response.status_code == codes.ACCEPTED
     assert isinstance(response.json(), dict)
     assert response.json() == expected_result

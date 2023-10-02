@@ -7,10 +7,9 @@ class APIError(Exception):
         self.error_message: str = message
 
 
-
 class SampleError(APIError):
     def __init__(self) -> None:
         super().__init__(
             status=SAMPLE_ERROR,
-            message="Message for this sample exception."
+            message="Message for this sample exception.",
         )
