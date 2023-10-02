@@ -13,3 +13,4 @@ Explain the solution and how it solves the problem.
 If applicable.
 
 Creation Date: DD/MM/YYYY
+Status: proposed, accepted, rejected, deprecated, superseded
