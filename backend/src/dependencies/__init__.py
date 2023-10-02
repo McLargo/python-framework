@@ -5,3 +5,9 @@ class Processor(ABC):
     @abstractmethod
     def sample_method(self) -> str:
         pass  # pragma: no cover
+
+
+class HttpClient(ABC):
+    @abstractmethod
+    def liveness(self) -> str:
+        pass  # pragma: no cover
