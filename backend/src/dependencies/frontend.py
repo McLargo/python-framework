@@ -1,10 +1,9 @@
-from httpx import Client, codes, Response
+from httpx import Client, Response, codes
+
 from . import HttpClient
 
 
-
 class Frontend(HttpClient):
-
     def __init__(self) -> None:
         super().__init__()
         self._client = Client()

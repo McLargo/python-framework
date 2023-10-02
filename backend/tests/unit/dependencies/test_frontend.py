@@ -1,7 +1,8 @@
-from src.dependencies.frontend import Frontend
 from unittest.mock import patch
 
-from httpx import codes, Client
+from httpx import Client, codes
+
+from src.dependencies.frontend import Frontend
 
 
 def test_frontend() -> None:

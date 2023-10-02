@@ -9,5 +9,5 @@ class Processor(ABC):
 
 class HttpClient(ABC):
     @abstractmethod
-    def liveness(self) -> str:
+    def liveness(self) -> bool:
         pass  # pragma: no cover
