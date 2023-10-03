@@ -79,10 +79,12 @@ jobs:
           git add assets/badges/coverage.svg
           git commit -m "Updated coverage.svg"
           echo ${{ github.repository }}
+          echo ${{ github.server_url }}
+          echo ${{ github }}
 
       - name: Push changes
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.COVERAGE_SECRET }}
           branch: ${{ github.ref }}
