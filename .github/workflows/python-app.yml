@@ -34,7 +34,7 @@ jobs:
         black backend --config=backend/pyproject.toml --check --diff
     - name: Mypy typing
       run: |
-        mypy backend --config-file=backend/pyproject.toml --check --diff
+        mypy backend --config-file=backend/pyproject.toml --check
 
     - name: Bandit
       run: |
