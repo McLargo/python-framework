@@ -55,9 +55,3 @@ jobs:
       - name: Run test with pytest
         run: |
           pytest --cov-report=json --cov=.
-
-      - name: Generate coverage badges
-        uses: gaelgirodon/ci-badges-action@v1
-        with:
-          gist-id: 4071d41d30a995a6e77f7d0df139ffe1
-          token: ${{ secrets.GIST_TOKEN }}
