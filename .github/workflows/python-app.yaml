@@ -42,7 +42,7 @@ jobs:
 
     - name: Ruff linter
       run: |
-        ruff . -- check
+        ruff check .
 
     - name: Detect secrets
       run: |
