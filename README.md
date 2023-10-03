@@ -1,7 +1,7 @@
 # python-frawework
 
 [![Python framework](https://github.com/McLargo/python-framework/actions/workflows/python-app.yaml/badge.svg)](https://github.com/McLargo/python-framework/actions/workflows/python-app.yaml)
-[![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/McLargo/python-framework/actions/workflows/python-app.yaml)
+[![coverage](./assets/badges/coverage.svg)](https://github.com/McLargo/python-framework/actions/workflows/python-app.yaml)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
