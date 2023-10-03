@@ -18,7 +18,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
@@ -74,6 +78,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add assets/badges/coverage.svg
           git commit -m "Updated coverage.svg"
+          echo ${{ github.repository }}
 
       - name: Push changes
         if: steps.verify-changed-files.outputs.files_changed == 'true'
