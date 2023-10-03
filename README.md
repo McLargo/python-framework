@@ -1,5 +1,10 @@
 # python-frawework
 
+[![Actions status](https://github.com/McLargo/python-framework/actions/workflows/python-app.yml/badge.svg)](https://github.com/McLargo/python-framework/actions)
+<!-- <a href="https://coveralls.io/github/psf/black?branch=main"><img alt="Coverage Status" src="https://coveralls.io/repos/github/psf/black/badge.svg?branch=main"></a> -->
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
 This is my python framework for new code challenges that requires to develop an
 API or small projects that requires to have a minimal API service. It is based
 on FastAPI, and it is dockerized. Also supports a minimal frontend, based on
