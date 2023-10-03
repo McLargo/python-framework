@@ -1,3 +1,4 @@
+---
 # This workflow will install Python dependencies, check python code (format,
 # linters...) and run tests with a single version of Python.
 # For more information see:
@@ -7,7 +8,6 @@ name: Python framework
 
 on:
   push:
-    branches: [ ** ]
   pull_request:
     types: [opened, reopened]
 
