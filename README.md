@@ -1,6 +1,6 @@
 # python-frawework
 
-[![Actions status](https://github.com/McLargo/python-framework/actions/workflows/python-app.yml/badge.svg)](https://github.com/McLargo/python-framework/actions)
+[![Python framework](https://github.com/McLargo/python-framework/actions/workflows/python-app.yaml/badge.svg)](https://github.com/McLargo/python-framework/actions/workflows/python-app.yaml)
 <!-- <a href="https://coveralls.io/github/psf/black?branch=main"><img alt="Coverage Status" src="https://coveralls.io/repos/github/psf/black/badge.svg?branch=main"></a> -->
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
