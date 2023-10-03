@@ -9,11 +9,6 @@ include = 'backend\*.pyi?$'
 [tool.coverage.report]
 skip_empty = true
 
-[tool.coverage.run]
-omit = [
-  "tests/*"
-]
-
 [tool.mypy]
 files = "**/*.py"
 exclude = ["tests"]
