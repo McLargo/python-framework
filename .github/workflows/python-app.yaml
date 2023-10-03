@@ -31,7 +31,7 @@ jobs:
           fi
       - name: Black format
         run: |
-          black backend --config=backend/pyproject.toml --check --diff
+          black . --config=backend/pyproject.toml --check --diff
       - name: Mypy typing
         run: |
           mypy backend --config-file=backend/pyproject.toml --check
@@ -54,7 +54,7 @@ jobs:
 
       - name: Run test with pytest
         run: |
-          pytest backend/tests
+          pytest backend/tests --cov-report=json
 
       - name: Generate coverage badges
         uses: gaelgirodon/ci-badges-action@v1
