@@ -13,10 +13,12 @@ repos:
     -   id: mypy
         args: ["--config-file", "backend/pyproject.toml"]
 
--   repo: https://github.com/Yelp/detect-secrets
-    rev: v1.4.0
+-   repo: https://github.com/PyCQA/bandit
+    rev: 1.7.5
     hooks:
-    -   id: detect-secrets
+    -   id: bandit
+        args: ["-c", "backend/pyproject.toml"]
+        additional_dependencies: [".[toml]"]
 
 -   repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.0.291
@@ -24,12 +26,10 @@ repos:
     -   id: ruff
         args: ["--fix"]
 
--   repo: https://github.com/PyCQA/bandit
-    rev: 1.7.5
+-   repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
     hooks:
-    -   id: bandit
-        args: ["-c", "backend/pyproject.toml"]
-        additional_dependencies: [".[toml]"]
+    -   id: detect-secrets
 
 -   repo: https://github.com/pappasam/toml-sort
     rev: v0.23.1
