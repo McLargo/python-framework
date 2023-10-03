@@ -54,7 +54,7 @@ jobs:
 
       - name: Run test with pytest
         run: |
-          pytest backend/tests --cov-report=json
+          pytest --cov-report=json --cov=.
 
       - name: Generate coverage badges
         uses: gaelgirodon/ci-badges-action@v1
