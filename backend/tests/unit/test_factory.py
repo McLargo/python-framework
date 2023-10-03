@@ -15,6 +15,5 @@ def test_factory_ok() -> None:
 
 
 def test_factory_ko() -> None:
-    with pytest.raises(ValueError) as exc:
+    with pytest.raises(ValueError, match="Invalid processor type"):
         SampleFactory.get_processor(processor_type="invalid")
-        assert exc.value == "Invalid processor type"

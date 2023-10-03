@@ -5,3 +5,9 @@ pytest-sugar
 pytest-cov
 faker
 ipdb
+black
+mypy
+bandit
+ruff
+detect-secrets
+toml-sort
