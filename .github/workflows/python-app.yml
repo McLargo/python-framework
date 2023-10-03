@@ -7,7 +7,7 @@ name: Python framework
 
 on:
   push:
-    branches: [ master ]
+    branches: [ ** ]
   pull_request:
     types: [opened, reopened]
 
