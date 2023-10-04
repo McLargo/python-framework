@@ -24,6 +24,10 @@ For this project, you will need to have
 [docker compose](https://docs.docker.com/compose/install/) installed. Please
 install in your machine using the instructions provided in the links.
 
+For this project, you will need to have [pip](https://pip.pypa.io/en/stable/)
+and [poetry](https://python-poetry.org/) installed. Please install in your
+machine using the instructions provided in the links.
+
 ### docker & docker compose utils
 
 If you are new to docker compose, and love to use the terminal like me, please
@@ -38,6 +42,18 @@ see below some of the most used commands:
 - to see the logs in real time: `docker logs -f <container_id>`
 - list all images: `docker images`
 - remove an image: `docker rmi <image_id>`
+
+### poetry
+
+If you are new to poetry, see below some of the most used commands:
+
+- `poetry --help`: to see all the commands available
+- `poetry init`: to create a new project
+- `poetry install`: to install all the dependencies
+- `poetry add <package_name>`: to add a new package to the project
+- `poetry remove <package_name>`: to remove a package from the project
+- `poetry run <command>`: to run a command inside the virtual environment
+- `poetry shell`: to enter inside the virtual environment
 
 ### Installation and usage
 
