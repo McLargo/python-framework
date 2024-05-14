@@ -139,16 +139,12 @@ Go inside docker container:
 
 ## CI/CD
 
-Not completed.
+Not applicable.
 
 ## Monitoring
 
-Not completed.
+Not applicable.
 
 ## Troubleshooting
 
-Not completed.
-
-## License
-
-Not completed.
+Not applicable.
