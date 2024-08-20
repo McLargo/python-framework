@@ -45,6 +45,8 @@ fixed structure that can be improve at any time, to have a standard way of
 developing new projects. I keep all my knowledge in one place, and it is the
 perfect playground for new features that can be included in the future.
 
+## Project structure
+
 Project structure is fixed, and it is based on the following structure:
 
 - `.github/workflows/`: folder to manage and gather files related to
@@ -108,6 +110,7 @@ decision made along with its context and consequences.
 Below is a list of the ADRs for this project:
 
 - [ADR-001](docs/adr/001-docker.md) - Docker
+- [ADR-002](docs/adr/002-poetry.md) - Poetry
 
 ## Contribution
 
@@ -115,17 +118,19 @@ Use [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) to
 your commit messages.
 
 As only one developer (myself) is expected to work at the same time in this
-project and frontend, every commit goes to **master** (Trunk-based development).
-No need to create new branches and make pull-request (unless breaking changes
-are introduced, such as new contracts to the app, big refactors...).
+project (backend and frontend), every commit goes to **master** (Trunk-based
+development). No need to create new branches and make pull-request (unless
+breaking changes are introduced, such as new contracts to the app, big
+refactors...).
 
 Install pre-commit hooks to include automatic tools to review code:
 
 ## Testing
 
 I do believe that unit test are the most important part of a project, to keep
-the code clean, and avoid breaking code that is working. A good coverage of the
-application indicates that services are robust. [TDD Test-Driven Development](
+the code clean, and avoid adding breaking code to a piece of software that is
+working. A good coverage of the application indicates that services are robust.
+[TDD Test-Driven Development](
 https://www.guru99.com/test-driven-development.html) is my ideal development
 methodology.
 
