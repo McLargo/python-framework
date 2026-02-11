@@ -143,7 +143,18 @@ Go inside docker container:
 
 ## CI/CD
 
-Not applicable.
+CI/CD is available using github actions. It is configured to run on every push
+to the repository, and it runs several steps:
+
+- Mypy: checks for type errors in the code.
+- Bandit: checks for security issues in the code.
+- Ruff: checks for code style issues in the code.
+- Detect secrets: checks for secrets in the code.
+- Toml check: checks for toml files syntax errors.
+- Yaml check: checks for yaml files syntax errors.
+- Pytest: runs all tests, and generates a coverage report in html format.
+- Codecov: uploads the coverage report to codecov, to have a better
+  visualization of the coverage report.
 
 ## Monitoring
 
