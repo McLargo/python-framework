@@ -17,6 +17,7 @@ addopts = [
   "-ra",
   "-q",
   "--cov",
+  "--cov-report=xml",
   "--cov-fail-under=100",
   "--no-cov-on-fail"
 ]
