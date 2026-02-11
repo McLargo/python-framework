@@ -7,7 +7,7 @@
 name: Python framework
 
 on:
-  push:
+  push: {}
   pull_request:
     types: [opened, reopened]
 
@@ -34,9 +34,6 @@ jobs:
           if [ -f backend/requirements-dev.txt ]; then
             pip install -r backend/requirements-dev.txt;
           fi
-      - name: Black format
-        run: |
-          black . --config=backend/pyproject.toml --check --diff
       - name: Mypy typing
         run: |
           mypy backend --config-file=backend/pyproject.toml --check
@@ -48,6 +45,10 @@ jobs:
       - name: Ruff linter
         run: |
           ruff check .
+
+      - name: Ruff format
+        run: |
+          ruff format . --check --diff
 
       - name: Detect secrets
         run: |
@@ -75,7 +76,8 @@ jobs:
       - name: Commit coverage badge file
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.email \
+            "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add assets/badges/coverage.svg
           git commit -m "Updated coverage.svg"

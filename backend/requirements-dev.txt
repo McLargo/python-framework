@@ -5,7 +5,6 @@ pytest-sugar
 pytest-cov
 faker
 ipdb
-black
 mypy
 bandit
 ruff
