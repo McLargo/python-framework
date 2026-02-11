@@ -7,7 +7,8 @@
 name: Python framework
 
 on:
-  push: {}
+  push:
+    branches: [master]
   pull_request:
     types: [opened, reopened]
 
@@ -57,6 +58,10 @@ jobs:
       - name: Toml sort
         run: |
           toml-sort -i backend/pyproject.toml --check
+
+      - name: Yaml lint
+        run: |
+          yamllint .
 
       - name: Run test with pytest
         run: |
