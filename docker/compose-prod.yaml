@@ -1,0 +1,21 @@
+# This file is intentionally a comment-only production Compose template.
+#
+# Do not run it as-is: it defines no services and deploys nothing.
+# Copy the development service definitions from compose.yaml only after the
+# production deployment model, secrets, networking, storage, and exposure
+# requirements have been decided.
+#
+# Example future structure:
+#
+# services:
+#   backend:
+#     image: your-registry/your-backend:tag
+#     restart: unless-stopped
+#     ports:
+#       - "8000:8000"
+#
+#   frontend:
+#     image: your-registry/your-frontend:tag
+#     restart: unless-stopped
+#     ports:
+#       - "8999:8999"
