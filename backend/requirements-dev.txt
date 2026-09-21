@@ -5,7 +5,7 @@ pytest-sugar
 pytest-cov
 faker
 ipdb
-mypy
+pyrefly
 bandit
 ruff
 detect-secrets

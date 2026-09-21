@@ -110,6 +110,8 @@ Below is a list of the ADRs for this project:
 
 - [ADR-001](docs/adr/001-docker.md) - Docker
 - [ADR-002](docs/adr/002-poetry.md) - Poetry
+- [ADR-003](docs/adr/003-type-hint.md) - Type Hint
+- [ADR-004](docs/adr/004-command-runner.md) - Command Runner
 
 ## Contribution
 
@@ -146,7 +148,7 @@ Go inside docker container:
 CI/CD is available using github actions. It is configured to run on every push
 to the repository, and it runs several steps:
 
-- Mypy: checks for type errors in the code.
+- Pyrefly: checks for type errors in the code.
 - Bandit: checks for security issues in the code.
 - Ruff: checks for code style issues in the code.
 - Detect secrets: checks for secrets in the code.

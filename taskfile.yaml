@@ -1,0 +1,19 @@
+version: '3'
+
+vars:
+  BACKEND_DIR: backend
+  POETRY: poetry run
+
+tasks:
+  lint:
+    dir: '{{.BACKEND_DIR}}'
+    desc: run all linters
+    cmds:
+      - '{{.POETRY}} ruff check .'
+      - '{{.POETRY}} ruff format . --check --diff'
+
+  hint:
+    dir: '{{.BACKEND_DIR}}'
+    desc: run the hints
+    cmds:
+      - '{{.POETRY}} pyrefly check .'

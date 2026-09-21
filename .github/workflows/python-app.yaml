@@ -37,7 +37,7 @@ jobs:
           fi
       - name: Mypy typing
         run: |
-          mypy backend --config-file=backend/pyproject.toml --check
+          pyrefly check .
 
       - name: Bandit
         run: |

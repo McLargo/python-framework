@@ -12,4 +12,4 @@ def test_liveness() -> None:
 
 def test_liveness_ko() -> None:
     with pytest.raises(ValueError):
-        LivenessModel()
+        LivenessModel()  # pyrefly: ignore[missing-argument]
