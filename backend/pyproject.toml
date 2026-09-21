@@ -4,12 +4,37 @@ exclude_dirs = ["tests"]
 [tool.coverage.report]
 skip_empty = true
 
-[tool.mypy]
-files = "**/*.py"
-exclude = ["tests"]
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "==0.103.1"
+pydantic-settings = "==2.0.3"
+uvicorn = { version = "==0.23.2", extras = ["standard"] }
+httpx = "==0.25.0"
+faker = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+pytest-cov = "*"
+pytest-sugar = "*"
+ipdb = "*"
+pyrefly = "*"
+bandit = "*"
+ruff = "*"
+detect-secrets = "*"
+toml-sort = "*"
+yamllint = "*"
+
+[tool.pyrefly]
+project_includes = [
+  "**/*.py"
+]
+search_path = [
+  "."
+]
 python_version = "3.10"
-warn_return_any = false
-ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -30,7 +55,6 @@ exclude = [
   ".git",
   "__pycache__",
   ".tox",
-  ".mypy_cache",
   ".venv",
   "node_modules"
 ]
