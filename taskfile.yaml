@@ -5,6 +5,13 @@ vars:
   POETRY: poetry run
 
 tasks:
+  init:
+    dir: '{{.BACKEND_DIR}}'
+    desc: initialize the backend environment
+    cmds:
+      - poetry install
+      - '{{.POETRY}} pre-commit install'
+
   lint:
     dir: '{{.BACKEND_DIR}}'
     desc: run all linters
@@ -17,3 +24,15 @@ tasks:
     desc: run the hints
     cmds:
       - '{{.POETRY}} pyrefly check .'
+
+  test:
+    dir: '{{.BACKEND_DIR}}'
+    desc: run all tests
+    cmds:
+      - '{{.POETRY}} pytest'
+
+  coverage:
+    dir: '{{.BACKEND_DIR}}'
+    desc: run tests with coverage report
+    cmds:
+      - '{{.POETRY}} pytest --cov-report=html --cov=.'
