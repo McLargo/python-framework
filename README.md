@@ -94,8 +94,8 @@ see below some of the most used commands:
 
 ### Installation and usage
 
-- step 1: `docker compose build`
-- step 2: `docker compose up -d`
+- step 1: `docker compose build -f docker/compose.yaml`
+- step 2: `docker compose -f docker/compose.yaml up -d`
 - step 3: go to your browser and open
   [http://localhost:8000/docs](http://localhost:8000/docs). If not opening,
   `docker logs -f <container_id>` to see the logs for errors.

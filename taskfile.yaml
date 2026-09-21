@@ -2,6 +2,8 @@ version: '3'
 
 vars:
   BACKEND_DIR: backend
+  FRONTEND_DIR: frontend
+  COMPOSE_FILE: docker/compose.yaml
   POETRY: poetry run
 
 tasks:
@@ -36,3 +38,61 @@ tasks:
     desc: run tests with coverage report
     cmds:
       - '{{.POETRY}} pytest --cov-report=html --cov=.'
+
+  ci:
+    desc: run the same restrictive checks as GitHub Actions
+    cmds:
+      - python -m pip install --upgrade pip
+      - pip install -r backend/requirements-dev.txt
+      - pyrefly check .
+      - bandit backend -c=backend/pyproject.toml
+      - ruff check .
+      - ruff format . --check --diff
+      - detect-secrets scan .
+      - toml-sort -i backend/pyproject.toml --check
+      - yamllint .
+      - pytest --cov=.
+
+  frontend:init:
+    dir: '{{.FRONTEND_DIR}}'
+    desc: install frontend dependencies
+    cmds:
+      - npm install
+
+  frontend:dev:
+    dir: '{{.FRONTEND_DIR}}'
+    desc: start the frontend development server
+    cmds:
+      - npm run dev
+
+  frontend:build:
+    dir: '{{.FRONTEND_DIR}}'
+    desc: build the frontend for production
+    cmds:
+      - npm run build
+
+  frontend:preview:
+    dir: '{{.FRONTEND_DIR}}'
+    desc: preview the production frontend build
+    cmds:
+      - npm run preview
+
+  docker:build:
+    desc: build the Docker Compose services
+    cmds:
+      - docker compose -f '{{.COMPOSE_FILE}}' build
+
+  docker:up:
+    desc: start the Docker Compose services
+    cmds:
+      - docker compose -f '{{.COMPOSE_FILE}}' up -d
+
+  docker:down:
+    desc: stop and remove the Docker Compose services
+    cmds:
+      - docker compose -f '{{.COMPOSE_FILE}}' down
+
+  docker:ps:
+    desc: list the Docker Compose services
+    cmds:
+      - docker compose -f '{{.COMPOSE_FILE}}' ps
