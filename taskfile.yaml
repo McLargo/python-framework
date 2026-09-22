@@ -20,6 +20,7 @@ tasks:
     cmds:
       - '{{.POETRY}} ruff check .'
       - '{{.POETRY}} ruff format . --check --diff'
+      - '{{.POETRY}} yamllint .'
 
   hint:
     dir: '{{.BACKEND_DIR}}'
@@ -39,19 +40,12 @@ tasks:
     cmds:
       - '{{.POETRY}} pytest --cov-report=html --cov=.'
 
-  ci:
-    desc: run the same restrictive checks as GitHub Actions
+  vulnerability:
+    dir: '{{.BACKEND_DIR}}'
+    desc: run vulnerability and security checks
     cmds:
-      - python -m pip install --upgrade pip
-      - pip install -r backend/requirements-dev.txt
-      - pyrefly check .
-      - bandit backend -c=backend/pyproject.toml
-      - ruff check .
-      - ruff format . --check --diff
-      - detect-secrets scan .
-      - toml-sort -i backend/pyproject.toml --check
-      - yamllint .
-      - pytest --cov=.
+      - '{{.POETRY}} bandit . -c=pyproject.toml -r'
+      - '{{.POETRY}} detect-secrets scan .'
 
   frontend:init:
     dir: '{{.FRONTEND_DIR}}'

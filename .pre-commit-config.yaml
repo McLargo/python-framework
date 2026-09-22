@@ -36,12 +36,6 @@ repos:
     hooks:
       - id: detect-secrets
 
-  - repo: https://github.com/pappasam/toml-sort
-    rev: v0.25.0
-    hooks:
-      - id: toml-sort
-        args: ["-i"]
-
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.38.0
     hooks:

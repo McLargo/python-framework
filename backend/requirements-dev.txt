@@ -8,5 +8,4 @@ pyrefly
 bandit
 ruff
 detect-secrets
-toml-sort
 yamllint

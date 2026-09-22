@@ -8,7 +8,7 @@ skip_empty = true
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.14"
 fastapi = "==0.103.1"
 pydantic-settings = "==2.0.3"
 uvicorn = { version = "==0.23.2", extras = ["standard"] }
@@ -24,7 +24,6 @@ pyrefly = "*"
 bandit = "*"
 ruff = "*"
 detect-secrets = "*"
-toml-sort = "*"
 yamllint = "*"
 
 [tool.pyrefly]
@@ -34,7 +33,7 @@ project_includes = [
 search_path = [
   "."
 ]
-python_version = "3.10"
+python_version = "3.14"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -59,7 +58,7 @@ exclude = [
   "node_modules"
 ]
 line-length = 80
-target-version = "py310"
+target-version = "py314"
 
 [tool.ruff.format]
 quote-style = "double"
@@ -80,20 +79,3 @@ select = [
   "PL"
 ]
 ignore = []
-
-[tool.tomlsort]
-all = true
-in_place = true
-no_comments = true
-no_header_comments = true
-no_footer_comments = true
-no_inline_comments = true
-no_block_comments = true
-no_sort_tables = true
-sort_inline_tables = true
-sort_inline_arrays = true
-spaces_before_inline_comment = 2
-spaces_indent_inline_array = 4
-trailing_comma_inline_array = true
-check = true
-ignore_case = true
