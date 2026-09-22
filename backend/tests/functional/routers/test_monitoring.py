@@ -1,6 +1,8 @@
+import pytest
 from httpx import Response, codes
 
 
+@pytest.mark.functional
 def test_liveness(client) -> None:
     expected_result: dict = {"backend_liveness": True}
 

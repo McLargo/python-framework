@@ -29,7 +29,7 @@ finished product. Keep changes focused on making the template easier to reuse.
   Add tests for new branches and behavior rather than relying only on happy
   path coverage.
 - Use Ruff for Python linting and formatting. The configured target is Python
-  3.10 with an 80-character line length and double-quoted strings.
+  3.14 with an 80-character line length and double-quoted strings.
 - Use the existing Vue/Vite conventions in `frontend/src/`; do not introduce a
   second frontend framework or package manager.
 - Follow the repository's Conventional Commits convention when creating

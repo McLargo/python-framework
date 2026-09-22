@@ -1,10 +1,12 @@
 from unittest.mock import ANY, Mock
 
+import pytest
 from faker import Faker
 
 from src.logger import Logger
 
 
+@pytest.mark.unit
 def test_logging_init() -> None:
     logger_empty_name: Logger = Logger()
     assert logger_empty_name._date_format == "%Y-%m-%d %H:%M:%S"
@@ -17,6 +19,7 @@ def test_logging_init() -> None:
     assert logger._logger.name == "test.test_logging"
 
 
+@pytest.mark.unit
 def test_logging_methods(faker: Faker) -> None:
     logger: Logger = Logger()
     logger._logger = Mock()

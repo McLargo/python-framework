@@ -1,6 +1,9 @@
+import pytest
+
 from src.settings import settings
 
 
+@pytest.mark.unit
 def test_settings() -> None:
     assert len(settings.model_dump()) == 1
 

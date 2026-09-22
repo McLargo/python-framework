@@ -1,8 +1,10 @@
+import pytest
 from faker import Faker
 
 from src.exceptions import SAMPLE_ERROR, APIError, SampleError
 
 
+@pytest.mark.unit
 def test_api_error(faker: Faker) -> None:
     status: int = faker.random_int()
     message: str = faker.sentence()
@@ -13,6 +15,7 @@ def test_api_error(faker: Faker) -> None:
     assert error.error_message == message
 
 
+@pytest.mark.unit
 def test_sample_error() -> None:
     error: SampleError = SampleError()
 
