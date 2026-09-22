@@ -28,6 +28,18 @@ tasks:
     cmds:
       - '{{.POETRY}} pyrefly check .'
 
+  unit:
+    dir: '{{.BACKEND_DIR}}'
+    desc: run unit tests
+    cmds:
+      - '{{.POETRY}} pytest -m unit'
+
+  functional:
+    dir: '{{.BACKEND_DIR}}'
+    desc: run functional tests
+    cmds:
+      - '{{.POETRY}} pytest -m functional'
+
   test:
     dir: '{{.BACKEND_DIR}}'
     desc: run all tests
@@ -38,7 +50,7 @@ tasks:
     dir: '{{.BACKEND_DIR}}'
     desc: run tests with coverage report
     cmds:
-      - '{{.POETRY}} pytest --cov-report=html --cov=.'
+      - '{{.POETRY}} pytest --cov-fail-under=100 --cov-report=html --cov=.'
 
   vulnerability:
     dir: '{{.BACKEND_DIR}}'

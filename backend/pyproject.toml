@@ -9,10 +9,10 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.14"
-fastapi = "==0.103.1"
-pydantic-settings = "==2.0.3"
-uvicorn = { version = "==0.23.2", extras = ["standard"] }
-httpx = "==0.25.0"
+fastapi = "==0.141.1"
+pydantic-settings = "==2.15.0"
+uvicorn = { version = "==0.53.0", extras = ["standard"] }
+httpx = "==0.28.1"
 faker = "*"
 
 [tool.poetry.group.dev.dependencies]
@@ -40,10 +40,11 @@ minversion = "6.0"
 addopts = [
   "-ra",
   "-q",
-  "--cov",
-  "--cov-report=xml",
-  "--cov-fail-under=100",
-  "--no-cov-on-fail"
+  "--no-cov-on-fail",
+]
+markers = [
+  "unit: isolated tests for a single component",
+  "functional: tests that exercise the application through its public interface"
 ]
 testpaths = [
   "tests"
